@@ -4,14 +4,14 @@ import { useLocation } from "react-router-dom";
 import "../css/WalletPage.css"; 
 
 // Import images for menu
-import menuIcon from "../assets/menu.png"; // ✅ Your menu button image
-import playButton from "../assets/main-play.png"; // ✅ Your play button image
-import quitButton from "../assets/main-quit.png"; // ✅ Your quit button image
+import menuIcon from "../assets/menu.png";
+import playButton from "../assets/main-play.png";
+import quitButton from "../assets/main-quit.png";
 
 const WalletPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const selectedCat = location.state?.selectedCat || null; // ✅ Get selected cat from state
+  const selectedCat = location.state?.selectedCat || null; // Get selected cat from state
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
@@ -23,13 +23,11 @@ const WalletPage: React.FC = () => {
 
   // Handle Play Button Click
   const handlePlay = () => {
-    console.log("Play Clicked!");
     setIsMenuOpen(false);
   };
 
   // Handle Quit Button Click
   const handleQuit = () => {
-    console.log("Quit Clicked!");
     navigate("/"); // ✅ Navigate back to main menu
   };
 
