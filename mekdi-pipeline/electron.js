@@ -11,33 +11,37 @@ app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
     width: 640,
     height: 520,
-    resizable: false,
-    fullscreenable: false,
-    maximizable: false,
+    resizable: false,  // 👈 Prevent resizing
+    fullscreenable: false, // 👈 Prevent full screen
+    maximizable: false,  // 👈 Disable maximize button
+    minimizable: false, // 👈 Optional: disable minimize
+    useContentSize: true, // 👈 Ensures the content fits the window size
+    frame: true, // 👈 Keeps window decorations (title bar, etc.)
     webPreferences: {
       nodeIntegration: true,
-      sandbox: false, // Prevents DBus issues in WSL
+      contextIsolation: false,
+      preload: path.join(__dirname, "preload.js"), // 👈 Load the Preload Script
     },
   });
 
-  const isDev = process.env.NODE_ENV === "development";
+  const isDev = process.env.NODE_ENV !== "production"; // Ensure this is correct
 
   if (isDev) {
-    console.log("🚀 Loading from Vite Dev Server: http://localhost:5173");
+    console.log("🚀 Forcing Electron to load from Vite Dev Server: http://localhost:5173");
     mainWindow.loadURL("http://localhost:5173");
   } else {
-    const indexPath = path.join(__dirname, "dist", "index.html");
-    console.log(`📂 Loading built React app from: file://${indexPath}`);
-
-    mainWindow.loadURL(`file://${indexPath}`).catch((err) => {
-      console.error("❌ Failed to load index.html:", err);
-    });
+    const indexPath = `file://${path.join(__dirname, "dist", "index.html")}`;
+    console.log(`📂 Loading built React app from: ${indexPath}`);
+    mainWindow.loadURL(indexPath);
   }
+  
 
+  // Handle `isResizable` check from Renderer
+  ipcMain.handle("isResizable", () => mainWindow.isResizable());
   mainWindow.webContents.openDevTools();
 });
 
-// Keep Electron app open
+// Prevent Electron from quitting
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();

@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "./",  // 👈 Ensures correct relative paths for Electron
+  base: process.env.ELECTRON ? "./" : "/", // 👈 Ensures correct paths for web & Electron
 });
