@@ -107,7 +107,7 @@ const ChooseCatPage: React.FC = () => {
         onClick={toggleMenu} 
       />
 
-      <h1 className="choose-cat-title">Choose your cat!</h1>
+      <h1 className="choose-cat title">Choose your cat!</h1>
 
       {/* Grid of Cat Options */}
       <div className="cat-grid">

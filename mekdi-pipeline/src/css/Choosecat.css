@@ -2,7 +2,8 @@
 .choose-cat-container {
     width: 100vw;
     height: 100vh;
-    background-color: #1e293b;
+    background: url("../assets/choose-bg.gif") center/cover no-repeat !important;
+    /* background-color: #1e293b; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,20 +11,31 @@
     text-align: center;
 }
 
+.choose-cat-container::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 0;
+  }
+
 /* Title */
-.choose-cat-title {
-    font-family: "PixelMax-Regular", sans-serif;
-    font-size: 2.5rem;
+h1.choose-cat.title {
     color: white;
-    margin-bottom: 20px;
+    font-size: 8vw;
+    z-index: 1;
+    margin: 0;
 }
 
 /* Grid Layout for Cat Choices */
 .cat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 3vw;
+    margin-bottom: 5vw;
 }
 
 /* Cat Image Boxes */
@@ -95,25 +107,35 @@
 
 /* "Let's Go" Button */
 .lets-go-button {
-    background-color: #007bff;
-    color: white;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
+    background-color: white;
+    color: var(--brown);
+    font-size: 1rem;
+    padding: 8px 15px;
+    border: 5px solid var(--brown);
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    box-shadow: 5px 5px 0px 0px black;
+    z-index: 1;
+}
+
+.lets-go-button:hover {
+    background-color: grey;
+    transform: scale(1.05);
+    transition: ease 0.25s;
 }
 
 /* Disabled Button */
 .lets-go-button:disabled {
-    background-color: grey;
+    background-color: grey !important;
+    border-color: black !important;
+    color: black;
     cursor: not-allowed;
 }
 
 /* Hover Effect */
 .lets-go-button:hover:enabled {
-    background-color: #0056b3;
+    background-color: white !important;
+    color: var(--brown);
 }
 
 /* Fullscreen Menu Overlay */
