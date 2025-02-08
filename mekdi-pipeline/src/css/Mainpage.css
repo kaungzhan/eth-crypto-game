@@ -24,10 +24,11 @@ body, .container, .button {
 }
 
 .title {
-  font-family: "PixelMax-Regular", sans-serif; 
-  font-size: 3rem;
+  font-family: "PixelMax-Regular", sans-serif;
+  font-size: 10vw;
   font-weight: bold;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 5px 0 #000, 2px 2px 0 #000;
 }
 
 /* Centered Container */
@@ -38,34 +39,63 @@ body, .container, .button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1e293b; /* Dark blue background */
+  background: url("../assets/bg.png") center/cover no-repeat !important;
   color: white;
   text-align: center;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 0;
 }
 
 /* Button Container */
 .button-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 4.25vw;
+  z-index: 1;
 }
 
 /* Buttons */
 .button {
-  background-color: #007bff;
+  background-color: transparent;
   color: white;
-  font-size: 4.25vw;
-  padding: 5vw 10vw;
+  font-size: 2.5vw;
+  padding: 3.5vw 1vw;
   border: none;
-  border-radius: 10vw;
   cursor: pointer;
-  transition: background 0.3s ease;
-  width: auto;
+  width: 34vw;
+  height: 10.9vw;
 }
+
+button:hover {
+  border-color: #63220f;
+}
+
+.play-btn .button {
+  background-image: url(../assets/blank-btn/green-btn.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-btn .button {
+  background-image: url(../assets/blank-btn/orange-btn.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 /* Hover Effect */
 .button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
   transform: scale(1.05);
   transition: ease 0.25s;
 }

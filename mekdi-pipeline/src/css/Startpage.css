@@ -7,7 +7,7 @@ body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-butto
 .game-container {
     width: 100vw;
     height: 100vh;
-    /* background: url("../assets/background-placeholder.jpg") center/cover no-repeat; */
+    /* background: url("../assets/bg.png") center/cover no-repeat !important; */
     background-color: #1e293b;
     display: flex;
     align-items: flex-end;
@@ -51,24 +51,24 @@ body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-butto
 /* Buttons Container */
 .dialog-buttons {
     position: absolute;
-    top: -40px; /* Move above the text box */
-    right: 20px; /* Align to the right */
+    top: -35%;
+    right: 1%;
     display: flex;
-    gap: 10px;
+    gap: 4vw;
 }
 
 /* Button Styling */
 .dialog-button {
-    background-color: #007bff;
-    color: white;
+    background-color: white;
+    color: #63220f;
     font-size: 1rem;
     padding: 8px 15px;
-    border: none;
+    border: 5px solid #63220f;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    box-shadow: 5px 5px 0px 0px black;
 }
 
 .dialog-button:hover {
-    background-color: #0056b3;
+    background-color: white;
 }
