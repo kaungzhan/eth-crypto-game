@@ -10,12 +10,17 @@ const MainPage: React.FC = () => {
       <h1 className="title vibrate">Mekdi Pipeline</h1>
 
       <div className="button-container">
-        <button className="button" onClick={() => navigate("/start")}>
-          Start
-        </button>
-        <button className="button" onClick={() => navigate("/about")}>
+        <div className="play-btn">
+          <button className="button" onClick={() => navigate("/start")}>
+            Start Game
+          </button>
+        </div>
+        <div className="about-btn">
+          <button className="button" onClick={() => navigate("/about")}>
           About ETH :)</button>
-        <button className="button">Settings</button>
+        </div>
+        
+        {/* <button className="button">Settings</button> */}
       </div>
     </div>
   );
