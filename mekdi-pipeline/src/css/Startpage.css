@@ -1,20 +1,17 @@
-/* Apply Font to Everything */
-body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-button {
-    font-family: "DogicaPixel", sans-serif;
-}
-
-/* Game Page Background */
+/* Ensure Game Container Uses Flexbox for Stacking */
 .game-container {
     width: 100vw;
     height: 100vh;
     background: url("../assets/outside.jpg") center/cover no-repeat !important;
-    /* background-color: #1e293b; */
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    flex-direction: column; /* ✅ Stack elements vertically */
+    align-items: flex-start; /* ✅ Center character and dialog */
+    justify-content: flex-end;
     padding: 20px;
+    position: relative;
 }
 
+/* Dark Overlay */
 .game-container::before {
     content: "";
     position: absolute;
@@ -24,25 +21,30 @@ body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-butto
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4); /* Adjust the opacity as needed */
     z-index: 0;
-  }
+}
 
-/* Character image on the left */
-.character {
+/* Character Image - Positioned Above Dialog */
+.animated-cat {
     height: 300px;
     object-fit: contain;
-    margin-left: 20px;
+    margin-bottom: -50px;
+    z-index: 2;
+    position: absolute;
+    left: 30%;
+    transform: translateX(-50%); /* ✅ Centers it properly */
+    bottom: 350px; /* ✅ Keeps it above the dialog */
 }
 
 /* Dialogue Box Styling */
-.dialog-box{
+.dialog-box {
     background: rgba(255, 255, 255, 0.9);
     padding: 15px 20px;
     border-radius: 10px;
-    width: 85%;
+    width: 87% !important;
     font-family: "MyCustomFont", sans-serif;
     color: #333;
     position: relative;
-    margin-bottom: 50px;
+    z-index: 1; /* ✅ Ensures dialog stays behind the character */
 }
 
 /* Character Name */
@@ -53,18 +55,20 @@ body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-butto
     margin-bottom: 5px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 2px 0 #000, 1px 2px 0 #000;
     color: white;
+    text-align: left;
 }
 
 /* Dialogue Text */
 .dialog-text {
     font-size: 2.25vw;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 /* Buttons Container */
 .dialog-buttons {
     position: absolute;
-    top: -44%;
+    top: -38%;
     right: 0%;
     display: flex;
     gap: 2vw;
