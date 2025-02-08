@@ -1,7 +1,15 @@
 import React from "react";
 import "../css/Aboutpage.css";
+import { useNavigate } from "react-router-dom";
 
-const Aboutpage: React.FC = () => {
+const AboutPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleNoThanks = () => {
+    console.log("❌ No Thanks button clicked!");
+    navigate("/");
+  };
+
   return (
     <div>
       <h1 className="page-title">
@@ -20,11 +28,11 @@ const Aboutpage: React.FC = () => {
       </p>
 
       <div className="options">
-        <button className="yes">
+        <button className="dialog-button yes">
             Yes! LET'S GO!!
         </button>
 
-        <button className="no">
+        <button className="dialog-button no" onClick={handleNoThanks}>
             No, take me back :(
         </button>
       </div>
@@ -33,4 +41,4 @@ const Aboutpage: React.FC = () => {
   );
 };
 
-export default Aboutpage;
+export default AboutPage;
