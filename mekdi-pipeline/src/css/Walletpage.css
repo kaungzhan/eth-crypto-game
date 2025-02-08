@@ -1,3 +1,28 @@
+/* Sparkle Animation */
+@keyframes sparkle-animation {
+    0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+    100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+}
+
+/* Sparkle Containers */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white; /* White Square Instead of Sparkle Image */
+    border-radius: 5px; /* Slightly rounded corners */
+    animation: sparkle-animation 1.5s ease-out forwards;
+}
+
+/* Random Sparkle Positions */
+.wallet-box .sparkle:nth-child(1) { top: -20px; left: -30px; }
+.wallet-box .sparkle:nth-child(2) { top: -25px; right: -20px; }
+.wallet-box .sparkle:nth-child(3) { bottom: -25px; left: 15px; }
+.wallet-box .sparkle:nth-child(4) { bottom: -30px; right: -20px; }
+.wallet-box .sparkle:nth-child(5) { top: 10px; left: 30px; }
+
+
 /* Page Container */
 .wallet-container {
     width: 100vw;
@@ -20,8 +45,8 @@
     top: 20%;
 }
 
-/* Wallet & Cat Box */
-.wallet-box, .cat-box {
+/* Wallet & Character Box */
+.wallet-box, .character-box {
     width: 140px;
     height: 140px;
     background: rgba(255, 255, 255, 0.3); /* Light transparent background */
@@ -36,21 +61,20 @@
     transition: transform 0.2s ease;
 }
 
-/* Diagonal Positioning */
 .wallet-box {
     position: relative;
-    top: -20px; /* Adjust diagonal effect */
-    right: -50px;
+    top: -60px;  /* Moves it higher */
+    left: -50px; /* Moves it to the left */
 }
 
-.cat-box {
+.character-box {
     position: relative;
-    top: 20px;
-    left: -50px;
+    top: 60px;  /* Moves it lower */
+    right: -50px; /* Moves it to the right */
 }
 
 /* Hover Effect */
-.wallet-box:hover, .cat-box:hover {
+.wallet-box:hover {
     transform: scale(1.1);
 }
 
