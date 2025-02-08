@@ -6,8 +6,7 @@ const ChooseCatPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLetsGo = () => {
-    console.log("✅ Let's Go button clicked!");
-    navigate("/start"); // ✅ Navigates to the Start Page after selecting a cat
+    navigate("/wallet"); 
   };
 
   return (
