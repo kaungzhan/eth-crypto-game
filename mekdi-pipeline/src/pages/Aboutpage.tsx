@@ -10,12 +10,17 @@ const AboutPage: React.FC = () => {
     navigate("/");
   };
 
+  const handleLetsGo = () => {
+    console.log("❌ No Thanks button clicked!");
+    navigate("/start");
+  };
+
   return (
     <div className= "about">
-      <h1 className=" title">
+      <h1 className=" title fly-up">
         What is Ethereum?
       </h1>
-      <div className="about-description">
+      <div className="about-description fly-up">
       <p>
       ETH (Ethereum) is like Bitcoin’s cooler, tech-savvy cousin. 🚀 
       It’s not just digital money—it’s also a giant, decentralized 
@@ -25,12 +30,12 @@ const AboutPage: React.FC = () => {
       </p>
       </div>
 
-      <p className="conversation"> 
+      <p className="conversation fly-up"> 
         Are you feeling more ready to take on the challenge?! 
       </p>
 
-      <div className="options">
-        <button className="dialog-button yes">
+      <div className="options fly-up">
+        <button className="dialog-button yes" onClick={handleLetsGo}>
             Yes! LET'S GO!!
         </button>
 

@@ -37,6 +37,9 @@
     border-radius: 4vw;
     border: 3px solid black;
     z-index: 1;
+}
+
+.fly-up {
     animation: myAnim 1s ease 0.25s;
 }
 
@@ -51,15 +54,15 @@ p.conversation {
     font-size: 1.75vw;
     text-align: center;
     margin: 2vw var(--horizontal);
-    animation: myAnim 1s ease 0.5s;
     z-index: 1;
+    animation-delay: 0.5s;
 }
 
 .options {
     display: flex;
     gap: 3vw;
     margin: 0 var(--horizontal);
-    animation: myAnim 1s ease 0.75s;
+    animation-delay: 0.5s;
     z-index: 1;
 }
 
