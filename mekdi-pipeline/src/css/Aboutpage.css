@@ -1,0 +1,51 @@
+:root{
+    --horizontal: 5vw;
+}
+
+
+
+h1.page-title {
+    font-size: 10vw;
+    margin: var(--horizontal) auto;
+    text-align: center;
+    animation: myAnim 1s ease 0s;
+}
+
+p.about-description {
+    font-size: 3.3vw;
+    margin: var(--horizontal);
+    animation: myAnim 1s ease 0.25s;
+}
+
+p.conversation {
+    font-size: medium;
+    margin: var(--horizontal);
+    animation: myAnim 1s ease 0.5s;
+}
+
+.options {
+    display: flex;
+    gap: 3vw;
+    margin: 0 var(--horizontal);
+    animation: myAnim 1s ease 0.75s;
+}
+
+.dialog-button:hover {
+    transform: scale(1.05);
+    transition: ease 0.25s;
+}
+
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
