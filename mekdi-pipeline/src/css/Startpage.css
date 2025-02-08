@@ -1,24 +1,3 @@
-/* Load Custom Font */
-@font-face {
-    font-family: "DogicaPixel";
-    src: url("/fonts/dogicapixel.ttf") format("truetype");
-  }
-  
-  @font-face {
-    font-family: "DogicaPixelBold";
-    src: url("/fonts/dogicapixelbold.ttf") format("truetype");
-  }
-  
-  @font-face {
-    font-family: "PixelMax-Regular";
-    src: url("/fonts/Pixelmax-Regular.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "PixelMax-Outline";
-    src: url("/fonts/Pixelmax-Outline.otf") format("opentype");
-  }
-
 /* Apply Font to Everything */
 body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-button {
     font-family: "DogicaPixel", sans-serif;
