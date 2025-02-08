@@ -3,15 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "../css/WalletPage.css"; 
 
-// Import images for menu
+// Import images
 import menuIcon from "../assets/menu.png";
 import playButton from "../assets/main-play.png";
 import quitButton from "../assets/main-quit.png";
+import walletImage from "../assets/wallet.png"; // ✅ Import Wallet Image
 
 const WalletPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const selectedCat = location.state?.selectedCat || null; // Get selected cat from state
+  const selectedCat = location.state?.selectedCat || null;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
@@ -31,9 +32,10 @@ const WalletPage: React.FC = () => {
     navigate("/"); // ✅ Navigate back to main menu
   };
 
+  // Handle Wallet Click (Triggers Sparkle Animation)
   const handleWalletClick = () => {
     setShowSparkles(true);
-    setTimeout(() => setShowSparkles(false), 1500); // ✅ Sparkles disappear after 1.5s
+    setTimeout(() => setShowSparkles(false), 1500);
   };
 
   return (
@@ -47,9 +49,9 @@ const WalletPage: React.FC = () => {
       />
 
       <div className="top-container">
-        {/* Wallet Box */}
+        {/* Wallet Box with Wallet Image */}
         <div className="wallet-box" onClick={handleWalletClick}>
-          <p>Wallet</p>
+          <img src={walletImage} alt="Wallet" className="wallet-image" /> {/* ✅ Add Wallet Image */}
           {showSparkles && (
             <div className="sparkle-container">
               <div className="sparkle"></div>
@@ -61,7 +63,7 @@ const WalletPage: React.FC = () => {
           )}
         </div>
 
-        {/* Character Box (No Animation Here) */}
+        {/* Character Box */}
         <div className="character-box">
           {selectedCat ? (
             <img src={selectedCat} alt="Selected Character" className="character-image" />
@@ -73,8 +75,10 @@ const WalletPage: React.FC = () => {
 
       {/* Dialogue Box */}
       <div className="dialog-box">
+        <span className="dialog-name">CryptMeow</span>
         <p className="dialog-text">This is your wallet! Tap on the wallet to claim it!</p>
       </div>
+
 
       {/* Fullscreen Menu (Only Shows When Menu is Open) */}
       {isMenuOpen && (
