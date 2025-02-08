@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
 import { fileURLToPath } from "url";
+import { ipcMain } from "electron";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,9 +19,9 @@ app.whenReady().then(() => {
     useContentSize: true, // 👈 Ensures the content fits the window size
     frame: true, // 👈 Keeps window decorations (title bar, etc.)
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      preload: path.join(__dirname, "preload.js"), // 👈 Load the Preload Script
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload.cjs"), // 👈 Load the Preload Script
     },
   });
 
@@ -35,6 +36,11 @@ app.whenReady().then(() => {
     mainWindow.loadURL(indexPath);
   }
   
+  // ✅ Prevent resizing at runtime
+  mainWindow.on("resize", () => {
+    console.log("⚠️ Resize detected! Resetting to fixed size.");
+    mainWindow.setSize(640, 520);
+  });
 
   // Handle `isResizable` check from Renderer
   ipcMain.handle("isResizable", () => mainWindow.isResizable());
