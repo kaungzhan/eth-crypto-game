@@ -4,6 +4,7 @@ import MainPage from "./pages/Mainpage";
 import StartPage from "./pages/Startpage";
 import AboutPage from "./pages/Aboutpage";
 import ChooseCatPage from "./pages/Choosecat";
+import WalletPage from "./pages/Walletpage";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/start" element={<StartPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/choose-cat" element={<ChooseCatPage />} />
+        <Route path="/wallet" element={<WalletPage />} />
       </Routes>
     </Router>
   );
