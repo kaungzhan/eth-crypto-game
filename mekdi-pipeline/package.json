@@ -4,15 +4,16 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"electron ./electron.js\"", 
-    "build": "tsc -b && vite build",  
-    "package": "electron-builder", 
+    "dev": "concurrently \"vite\" \"electron ./electron.js\"",
+    "build": "tsc -b && vite build",
+    "package": "electron-builder",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
