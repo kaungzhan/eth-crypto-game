@@ -1,42 +1,60 @@
-/* MainPage.css */
+/* Load Custom Font */
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("/fonts/dogicapixel.ttf") format("truetype");
+}
+
+/* Apply Font to Everything */
+body, .container, .title, .button {
+  font-family: "MyCustomFont", sans-serif;
+}
+
+/* Centered Container */
 .container {
-    width: 640px;
-    height: 520px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full screen height */
-    background-color: #1e293b; /* Dark blue background */
-    color: white;
-    text-align: center;
-  }
-  
-  .title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .button {
-    background-color: #007bff; /* Blue button */
-    color: white;
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    width: 200px;
-  }
-  
-  .button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+  width: 640px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e293b; /* Dark blue background */
+  color: white;
+  text-align: center;
+}
+
+/* Title Styling */
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Buttons */
+.button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 200px;
+}
+
+/* Hover Effect */
+.button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Prevent Window Resizing in Electron */
+html, body {
+  overflow: hidden; /* Prevent scrollbars */
+}
