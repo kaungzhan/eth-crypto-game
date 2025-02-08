@@ -1,35 +1,46 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../css/WalletPage.css"; // ✅ Import CSS
+import { useLocation } from "react-router-dom";
+import "../css/WalletPage.css"; 
 
 const WalletPage: React.FC = () => {
-  const navigate = useNavigate();
-  const [sparkles, setSparkles] = useState<number[]>([]);
+  const location = useLocation();
+  const selectedCat = location.state?.selectedCat || null; // ✅ Get selected cat from state
+
+  const [showSparkles, setShowSparkles] = useState(false);
 
   const handleWalletClick = () => {
-    // Generate 5 sparkles dynamically
-    const newSparkles = Array.from({ length: 5 }, (_, i) => i);
-    setSparkles(newSparkles);
-
-    // Remove sparkles after 1.5 seconds
-    setTimeout(() => setSparkles([]), 1500);
+    setShowSparkles(true);
+    setTimeout(() => setShowSparkles(false), 1500); // ✅ Sparkles disappear after 1.5s
   };
 
   return (
     <div className="wallet-container">
-      {/* Wallet & Character Boxes */}
       <div className="top-container">
+        {/* Wallet Box */}
         <div className="wallet-box" onClick={handleWalletClick}>
-          Wallet
-          {/* Sparkle Containers */}
-          {sparkles.map((sparkle) => (
-            <div key={sparkle} className="sparkle"></div>
-          ))}
+          <p>Wallet</p>
+          {showSparkles && (
+            <div className="sparkle-container">
+              <div className="sparkle"></div>
+              <div className="sparkle"></div>
+              <div className="sparkle"></div>
+              <div className="sparkle"></div>
+              <div className="sparkle"></div>
+            </div>
+          )}
         </div>
-        <div className="character-box">Character</div>
+
+        {/* Character Box (No Animation Here) */}
+        <div className="character-box">
+          {selectedCat ? (
+            <img src={selectedCat} alt="Selected Character" className="character-image" />
+          ) : (
+            <p>No character selected</p>
+          )}
+        </div>
       </div>
 
-      {/* Dialogue Box at Bottom */}
+      {/* Dialogue Box */}
       <div className="dialog-box">
         <p className="dialog-text">This is your wallet! Tap on the wallet to claim it!</p>
       </div>

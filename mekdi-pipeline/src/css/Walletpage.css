@@ -11,7 +11,7 @@
     width: 20px;
     height: 20px;
     background: white; /* White Square Instead of Sparkle Image */
-    border-radius: 5px; /* Slightly rounded corners */
+    border-radius: 5px;
     animation: sparkle-animation 1.5s ease-out forwards;
 }
 
@@ -21,7 +21,6 @@
 .wallet-box .sparkle:nth-child(3) { bottom: -25px; left: 15px; }
 .wallet-box .sparkle:nth-child(4) { bottom: -30px; right: -20px; }
 .wallet-box .sparkle:nth-child(5) { top: 10px; left: 30px; }
-
 
 /* Page Container */
 .wallet-container {
@@ -35,7 +34,7 @@
     padding: 20px;
 }
 
-/* Top Container (Holds Wallet & Cat Boxes) */
+/* Top Container (Holds Wallet & Character Boxes) */
 .top-container {
     width: 100%;
     display: flex;
@@ -49,8 +48,8 @@
 .wallet-box, .character-box {
     width: 140px;
     height: 140px;
-    background: rgba(255, 255, 255, 0.3); /* Light transparent background */
-    border: 2px dashed white; /* Dashed border */
+    background: rgba(255, 255, 255, 0);
+    border: none;
     font-family: "DogicaPixel", sans-serif;
     font-size: 1rem;
     color: white;
@@ -61,16 +60,27 @@
     transition: transform 0.2s ease;
 }
 
-.wallet-box {
-    position: relative;
-    top: -60px;  /* Moves it higher */
-    left: -50px; /* Moves it to the left */
+/* Character Image */
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ✅ Ensures image fills the box without distortion */
+    border-radius: 10px; /* Optional: Adds rounded corners */
 }
 
+
+/* Wallet Box - Click Triggers Animation */
+.wallet-box {
+    position: relative;
+    top: -60px;
+    left: -50px;
+}
+
+/* Character Box (No Animation Here) */
 .character-box {
     position: relative;
-    top: 60px;  /* Moves it lower */
-    right: -50px; /* Moves it to the right */
+    top: 60px;
+    right: -50px;
 }
 
 /* Hover Effect */
