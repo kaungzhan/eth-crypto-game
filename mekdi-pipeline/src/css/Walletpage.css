@@ -34,6 +34,10 @@
     padding: 20px;
 }
 
+.wallet-container.dimmed {
+    background-color: rgba(30, 41, 59, 0.7); /* Darker background */
+}
+
 /* Top Container (Holds Wallet & Character Boxes) */
 .top-container {
     width: 100%;
@@ -104,4 +108,54 @@
 /* Dialogue Text */
 .dialog-text {
     font-size: 1rem;
+}
+
+/* Menu Button (Top Right) */
+.menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.menu-button:hover {
+    transform: scale(1.1);
+}
+
+/* Fullscreen Menu Overlay */
+.menu-overlay {
+    position: fixed; /* ✅ Covers the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* ✅ Dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 11;
+}
+
+/* Menu Options */
+.menu-option {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.menu-option:hover {
+    transform: scale(1.1);
+}
+
+/* Ensure Wallet & Character Stay Unchanged */
+.wallet-box, .character-box, .dialog-box {
+    position: relative;
+    z-index: 3; /* ✅ Keep these below the menu */
 }
