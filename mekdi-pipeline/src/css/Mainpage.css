@@ -1,12 +1,33 @@
-/* Load Custom Font */
+/* Load Custom Fonts */
 @font-face {
-  font-family: "MyCustomFont";
+  font-family: "DogicaPixel";
   src: url("/fonts/dogicapixel.ttf") format("truetype");
 }
 
-/* Apply Font to Everything */
-body, .container, .title, .button {
-  font-family: "MyCustomFont", sans-serif;
+@font-face {
+  font-family: "DogicaPixelBold";
+  src: url("/fonts/dogicapixelbold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PixelMax-Regular";
+  src: url("/fonts/Pixelmax-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "PixelMax-Outline";
+  src: url("/fonts/Pixelmax-Outline.otf") format("opentype");
+}
+/* Apply Fonts to Specific Elements */
+body, .container, .button {
+  font-family: "DogicaPixel", sans-serif;
+}
+
+.title {
+  font-family: "PixelMax-Regular", sans-serif; 
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
 }
 
 /* Centered Container */
@@ -20,13 +41,6 @@ body, .container, .title, .button {
   background-color: #1e293b; /* Dark blue background */
   color: white;
   text-align: center;
-}
-
-/* Title Styling */
-.title {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 4rem;
 }
 
 /* Button Container */
