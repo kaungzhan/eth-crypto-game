@@ -11,11 +11,10 @@ const StartPage: React.FC = () => {
   };
 
   const handleLetsGo = () => {
-    console.log("✅ Let's Go button clicked!");
+    navigate("/choose-cat");
   };
 
   const handleNoThanks = () => {
-    console.log("❌ No Thanks button clicked!");
     navigate("/");
   };
 

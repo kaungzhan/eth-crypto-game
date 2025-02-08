@@ -1,12 +1,6 @@
-/* Load Custom Font */
-@font-face {
-    font-family: "MyCustomFont";
-    src: url("/fonts/dogicapixel.ttf") format("truetype");
-}
-
 /* Apply Font to Everything */
-body, .game-container, .dialog-box, .character-name, .dialog-text {
-    font-family: "MyCustomFont", sans-serif;
+body, .game-container, .dialog-box, .character-name, .dialog-text, .dialog-button {
+    font-family: "DogicaPixel", sans-serif;
 }
 
 /* Game Page Background */
