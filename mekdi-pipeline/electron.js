@@ -15,7 +15,7 @@ app.whenReady().then(() => {
     resizable: false,  // 👈 Prevent resizing
     fullscreenable: false, // 👈 Prevent full screen
     maximizable: false,  // 👈 Disable maximize button
-    minimizable: false, // 👈 Optional: disable minimize
+    minimizable: true, // 👈 Optional: disable minimize
     useContentSize: true, // 👈 Ensures the content fits the window size
     frame: true, // 👈 Keeps window decorations (title bar, etc.)
     webPreferences: {
