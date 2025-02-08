@@ -27,6 +27,11 @@ import cat6_1 from "../assets/cat6/cat6-1.png";
 import cat6_2 from "../assets/cat6/cat6-2.png";
 import cat6_3 from "../assets/cat6/cat6-3.png";
 
+// Import menu UI
+import menuIcon from "../assets/menu.png";
+import playButton from "../assets/main-play.png";
+import quitButton from "../assets/main-quit.png";
+
 // Array of animations for each cat
 const catAnimations = [
   [cat1_1, cat1_2, cat1_3],
@@ -42,6 +47,7 @@ const ChooseCatPage: React.FC = () => {
   const [selectedCat, setSelectedCat] = useState<number | null>(null);
   const [hoveredCat, setHoveredCat] = useState<number | null>(null);
   const [currentFrame, setCurrentFrame] = useState<number>(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Handle selecting a cat
   const handleCatSelect = (index: number) => {
@@ -74,8 +80,33 @@ const ChooseCatPage: React.FC = () => {
     }
   };
 
+  // Toggle Menu Visibility
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  // Handle Play Button Click
+  const handlePlay = () => {
+    console.log("Play Clicked!");
+    setIsMenuOpen(false);
+  };
+
+  // Handle Quit Button Click
+  const handleQuit = () => {
+    console.log("Quit Clicked!");
+    navigate("/"); // ✅ Navigate back to main menu
+  };
+
   return (
     <div className="choose-cat-container">
+      {/* Menu Button (Top Right) */}
+      <img 
+        src={menuIcon} 
+        alt="Menu" 
+        className="menu-button"
+        onClick={toggleMenu} 
+      />
+
       <h1 className="choose-cat-title">Choose your cat!</h1>
 
       {/* Grid of Cat Options */}
@@ -112,6 +143,14 @@ const ChooseCatPage: React.FC = () => {
       <button className="lets-go-button" onClick={handleLetsGo} disabled={selectedCat === null}>
         Let's Go
       </button>
+
+      {/* Fullscreen Menu (Only Shows When Menu is Open) */}
+      {isMenuOpen && (
+        <div className="menu-overlay">
+          <img src={playButton} alt="Play" className="menu-option" onClick={handlePlay} />
+          <img src={quitButton} alt="Quit" className="menu-option" onClick={handleQuit} />
+        </div>
+      )}
     </div>
   );
 };

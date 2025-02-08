@@ -115,3 +115,47 @@
 .lets-go-button:hover:enabled {
     background-color: #0056b3;
 }
+
+/* Fullscreen Menu Overlay */
+.menu-overlay {
+    position: fixed; /* ✅ Covers the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* ✅ Dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 11;
+}
+
+/* Menu Button (Top Right) */
+.menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.menu-button:hover {
+    transform: scale(1.1);
+}
+
+/* Menu Options */
+.menu-option {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.menu-option:hover {
+    transform: scale(1.1);
+}

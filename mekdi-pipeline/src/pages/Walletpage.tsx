@@ -1,12 +1,35 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "../css/WalletPage.css"; 
 
+// Import images for menu
+import menuIcon from "../assets/menu.png";
+import playButton from "../assets/main-play.png";
+import quitButton from "../assets/main-quit.png";
+
 const WalletPage: React.FC = () => {
   const location = useLocation();
-  const selectedCat = location.state?.selectedCat || null; // ✅ Get selected cat from state
+  const navigate = useNavigate();
+  const selectedCat = location.state?.selectedCat || null; // Get selected cat from state
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
+
+  // Toggle Menu Visibility
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  // Handle Play Button Click
+  const handlePlay = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Handle Quit Button Click
+  const handleQuit = () => {
+    navigate("/"); // ✅ Navigate back to main menu
+  };
 
   const handleWalletClick = () => {
     setShowSparkles(true);
@@ -15,6 +38,14 @@ const WalletPage: React.FC = () => {
 
   return (
     <div className="wallet-container">
+      {/* Menu Button (Top Right) */}
+      <img 
+        src={menuIcon} 
+        alt="Menu" 
+        className="menu-button"
+        onClick={toggleMenu} 
+      />
+
       <div className="top-container">
         {/* Wallet Box */}
         <div className="wallet-box" onClick={handleWalletClick}>
@@ -44,6 +75,14 @@ const WalletPage: React.FC = () => {
       <div className="dialog-box">
         <p className="dialog-text">This is your wallet! Tap on the wallet to claim it!</p>
       </div>
+
+      {/* Fullscreen Menu (Only Shows When Menu is Open) */}
+      {isMenuOpen && (
+        <div className="menu-overlay">
+          <img src={playButton} alt="Play" className="menu-option" onClick={handlePlay} />
+          <img src={quitButton} alt="Quit" className="menu-option" onClick={handleQuit} />
+        </div>
+      )}
     </div>
   );
 };
