@@ -1,26 +1,58 @@
 :root{
-    --horizontal: 5vw;
+    --horizontal: 10vw;
 }
 
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 640px;
+    height: 520px;
+    background: url("../assets/blue-bg.jpg") center/cover no-repeat !important;
+}
 
+.about::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust the opacity as needed */
+    z-index: 0;
+  }
 
-h1.page-title {
+.about h1.title {
     font-size: 10vw;
-    margin: var(--horizontal) auto;
+    margin: 0 auto 3vw;
     text-align: center;
     animation: myAnim 1s ease 0s;
+    color: white;
+    z-index: 1;
 }
 
-p.about-description {
-    font-size: 3.3vw;
-    margin: var(--horizontal);
+.about-description {
+    background: white;
+    margin: 0 10vw;
+    border-radius: 4vw;
+    border: 3px solid black;
+    z-index: 1;
     animation: myAnim 1s ease 0.25s;
 }
 
+.about-description p {
+    font-size: 2vw;
+    padding: 0 5.5vw;
+    /* animation: myAnim 1s ease 0.25s; */
+}
+
 p.conversation {
-    font-size: medium;
-    margin: var(--horizontal);
+    color: white;
+    font-size: 1.75vw;
+    text-align: center;
+    margin: 2vw var(--horizontal);
     animation: myAnim 1s ease 0.5s;
+    z-index: 1;
 }
 
 .options {
@@ -28,6 +60,7 @@ p.conversation {
     gap: 3vw;
     margin: 0 var(--horizontal);
     animation: myAnim 1s ease 0.75s;
+    z-index: 1;
 }
 
 .dialog-button:hover {

@@ -75,6 +75,10 @@ body, .container, .button {
   height: 10.9vw;
 }
 
+button:hover {
+  border-color: #63220f;
+}
+
 .play-btn .button {
   background-image: url(../assets/blank-btn/green-btn.png);
   background-size: cover;
