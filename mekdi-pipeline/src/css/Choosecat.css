@@ -24,7 +24,7 @@
 }
 
 /* 🟡 Title */
-h1.choose-cat-title {
+h1.choose-cat.title {
     color: white;
     font-size: 8vw;
     z-index: 1;

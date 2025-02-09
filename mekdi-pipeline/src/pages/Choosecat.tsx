@@ -125,7 +125,7 @@ const ChooseCatPage: React.FC = () => {
   
   return (
     <div className="choose-cat-container">
-      <h1 className="choose-cat-title">Choose your cat!</h1>
+      <h1 className="choose-cat title">Choose your cat!</h1>
 
       <div className="cat-grid">
         {catAnimations.map((catFrames, index) => (
