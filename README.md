@@ -56,7 +56,7 @@ about crypto or will you send CryptMeow to Mekdi??? 🍔😼 Play to find out!
 - 🏫 Introduce a finance educational mini-game tailored for kids
 
 # 📄 Our Pitch Deck
-This is the slide that we have prepared for our competition which covers most of the things describe in this README~
+This is the slide that we have prepared for our competition which covers most of the things describe in this README~  
 [ETH Oxford Slide.pdf](https://github.com/user-attachments/files/18724088/ETH.Oxford.Slide.pdf)
 
 <h3>Thank you for going through this README! If you have any questions, feel free to contact any of us!</h3>
