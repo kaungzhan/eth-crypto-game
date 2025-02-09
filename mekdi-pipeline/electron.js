@@ -12,12 +12,12 @@ app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
     width: 640,
     height: 520,
-    resizable: false,  // 👈 Prevent resizing
-    fullscreenable: false, // 👈 Prevent full screen
-    maximizable: false,  // 👈 Disable maximize button
-    minimizable: true, // 👈 Optional: disable minimize
-    useContentSize: true, // 👈 Ensures the content fits the window size
-    frame: true, // 👈 Keeps window decorations (title bar, etc.)
+    resizable: false, 
+    fullscreenable: false,
+    maximizable: false,
+    minimizable: true,
+    useContentSize: true,
+    frame: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -42,9 +42,15 @@ app.whenReady().then(() => {
     mainWindow.setSize(640, 520);
   });
 
-  // Handle `isResizable` check from Renderer
-  ipcMain.handle("isResizable", () => mainWindow.isResizable());
   mainWindow.webContents.openDevTools();
+});
+
+ipcMain.on("minimize-window", () => {
+  mainWindow.minimize();
+});
+
+ipcMain.on("close-window", () => {
+  mainWindow.close();
 });
 
 // Prevent Electron from quitting

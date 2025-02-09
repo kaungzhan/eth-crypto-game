@@ -87,15 +87,19 @@
 /* Wallet Box - Click Triggers Animation */
 .wallet-box {
     position: relative;
-    top: -60px;
-    left: -50px;
+    top: -50px;
+    left: 15px;
+    height: 250px;
+    width: auto;
 }
 
 /* Character Box (No Animation Here) */
 .character-box {
     position: relative;
-    top: 60px;
+    top: 50px;
     right: -50px;
+    height: 300px;
+    width: auto;
 }
 
 /* Hover Effect */
@@ -108,12 +112,13 @@
     background: rgba(255, 255, 255, 0.9);
     padding: 15px 20px;
     border-radius: 10px;
-    width: 80%;
+    width: 80% !important;
     max-width: 900px;
     font-family: "DogicaPixel", sans-serif;
     color: #333;
     text-align: center;
     margin-bottom: 50px;
+    text-align: left;
 }
 
 /* Dialogue Text */
@@ -169,4 +174,10 @@
 .wallet-box, .character-box, .dialog-box {
     position: relative;
     z-index: 3; /* ✅ Keep these below the menu */
+}
+
+.wallet-image {
+    width: 100%; /* ✅ Ensures it fills the wallet box */
+    height: 100%;
+    object-fit: contain; /* ✅ Maintains aspect ratio */
 }

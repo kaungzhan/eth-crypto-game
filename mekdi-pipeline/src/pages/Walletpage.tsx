@@ -1,20 +1,27 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../css/WalletPage.css"; 
 
-// Import images for menu
+// Import images
 import menuIcon from "../assets/menu.png";
 import playButton from "../assets/main-play.png";
 import quitButton from "../assets/main-quit.png";
+import walletImage from "../assets/wallet.png"; // ✅ Wallet Image
+import star1 from "../assets/star/star_01.png";
+import star2 from "../assets/star/star_02.png";
+import star3 from "../assets/star/star_03.png";
+import star4 from "../assets/star/star_04.png";
+
+const starImages = [star1, star2, star3, star4];
 
 const WalletPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const selectedCat = location.state?.selectedCat || null; // Get selected cat from state
+  const selectedCat = location.state?.selectedCat || null;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showSparkles, setShowSparkles] = useState(false);
+  const [starFrame, setStarFrame] = useState<number>(0);
+  const [starPositions, setStarPositions] = useState<{ top: string; left: string; key: number }[]>([]);
 
   // Toggle Menu Visibility
   const toggleMenu = () => {
@@ -31,9 +38,27 @@ const WalletPage: React.FC = () => {
     navigate("/"); // ✅ Navigate back to main menu
   };
 
+  // Handle Wallet Click (Triggers Star Animation)
   const handleWalletClick = () => {
-    setShowSparkles(true);
-    setTimeout(() => setShowSparkles(false), 1500); // ✅ Sparkles disappear after 1.5s
+    generateStars();
+  };
+
+  // Sequential star animation update
+  useEffect(() => {
+    const starInterval = setInterval(() => {
+      setStarFrame((prev) => (prev + 1) % starImages.length);
+    }, 200);
+    return () => clearInterval(starInterval);
+  }, []);
+
+  // Generate random positions for stars inside the wallet box
+  const generateStars = () => {
+    const positions = Array.from({ length: 3 }, () => ({
+      top: `${Math.random() * 60 + 20}%`, // Keep within bounds
+      left: `${Math.random() * 60 + 20}%`,
+      key: Math.random(),
+    }));
+    setStarPositions(positions);
   };
 
   return (
@@ -47,21 +72,34 @@ const WalletPage: React.FC = () => {
       />
 
       <div className="top-container">
-        {/* Wallet Box */}
+        {/* Wallet Box with Wallet Image */}
         <div className="wallet-box" onClick={handleWalletClick}>
-          <p>Wallet</p>
-          {showSparkles && (
-            <div className="sparkle-container">
-              <div className="sparkle"></div>
-              <div className="sparkle"></div>
-              <div className="sparkle"></div>
-              <div className="sparkle"></div>
-              <div className="sparkle"></div>
-            </div>
-          )}
+          <img src={walletImage} alt="Wallet" className="wallet-image" />
+          {/* Star Animation (Replaces Sparkles) */}
+          <div className="star-wrapper">
+            {starPositions.map((pos) => (
+              <div 
+                key={pos.key}
+                className="star-container"
+                style={{
+                  position: 'absolute',
+                  top: pos.top,
+                  left: pos.left,
+                  pointerEvents: 'none',
+                  transition: 'all 2s ease-in-out'
+                }}
+              >
+                <img
+                  src={starImages[starFrame]} 
+                  alt="Star"
+                  className="star-effect"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Character Box (No Animation Here) */}
+        {/* Character Box */}
         <div className="character-box">
           {selectedCat ? (
             <img src={selectedCat} alt="Selected Character" className="character-image" />
@@ -73,6 +111,7 @@ const WalletPage: React.FC = () => {
 
       {/* Dialogue Box */}
       <div className="dialog-box">
+        <span className="dialog-name">CryptMeow</span>
         <p className="dialog-text">This is your wallet! Tap on the wallet to claim it!</p>
       </div>
 
