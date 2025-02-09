@@ -5,6 +5,9 @@
 <h1 align="center">Mekdi Pipeline</h1>
 
 # 📝 Problem Statement
+🧩 Understanding blockchain technology, especially Ethereum, can be complex and intimidating for beginners. ⚡ Traditional educational resources often lack engagement, making it difficult for users to grasp essential concepts like smart contracts 📝, gas fees ⛽, and decentralized applications (dApps) 🌐.  
+
+📚 Furthermore, crypto education is often dry and technical, discouraging new learners from exploring the potential of blockchain 🚀. There is a need for an interactive 🎮 and gamified 🏆 approach that makes learning about Ethereum fun, immersive, and accessible.
 
 # 💡 Our Solution
 A gamified dApp for learning about the ethereum blockchain 
@@ -40,8 +43,11 @@ about crypto or will you send CryptMeow to Mekdi??? 🍔😼 Play to find out!
 | Backend      | Solidity    |
 
 # 🏆 Team 
-![ETH Oxford Slide](https://github.com/user-attachments/assets/713ac1c9-d2cf-4684-95bc-ed00ca74b6e1)
-Find Us On LinkedIn! 
+![ETH Oxford Slide](https://github.com/user-attachments/assets/713ac1c9-d2cf-4684-95bc-ed00ca74b6e1)  
+<b>Find Us On LinkedIn! </b>
+- [Clarissa](https://github.com/clarissachng) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/clarissa-chng/)
+- [Xin Yan](https://github.com/zt22740) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/xin-yan-lim-70200b265/)
+- [Dennis](https://github.com/kaungzhan) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kaung-zaw-han-660614333/) 
 
 
 # 🚀  Potential Improvements
@@ -50,5 +56,7 @@ Find Us On LinkedIn!
 - 🏫 Introduce a finance educational mini-game tailored for kids
 
 # 📄 Our Pitch Deck
-
+This is the slide that we have prepared for our competition which covers most of the things describe in this README~
 [ETH Oxford Slide.pdf](https://github.com/user-attachments/files/18724088/ETH.Oxford.Slide.pdf)
+
+<h3>Thank you for going through this README! If you have any questions, feel free to contact any of us!</h3>
