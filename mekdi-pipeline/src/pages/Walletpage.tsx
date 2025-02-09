@@ -111,7 +111,7 @@ const WalletPage: React.FC = () => {
 
       {/* Dialogue Box */}
       <div className="dialog-box">
-        <span className="dialog-name">CryptMeow</span>
+        <span className="character-name">CryptMeow</span>
         <p className="dialog-text">This is your wallet! Tap on the wallet to claim it!</p>
       </div>
 
