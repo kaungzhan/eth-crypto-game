@@ -1,0 +1,33 @@
+.title-bar {
+    width: 100%;
+    height: 40px;
+    background-color: #222;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: "Pixelmax-Regular", sans-serif; /* Change this to your desired font */
+    font-size: 16px;
+    color: white;
+  }
+  
+.title-text {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .title-button {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .title-button:hover {
+    opacity: 0.7;
+  }

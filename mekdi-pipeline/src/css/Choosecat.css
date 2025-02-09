@@ -1,36 +1,37 @@
-/* Container for the page */
+/* 🟢 Container for the page */
 .choose-cat-container {
     width: 100vw;
     height: 100vh;
     background: url("../assets/choose-bg.gif") center/cover no-repeat !important;
-    /* background-color: #1e293b; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .choose-cat-container::before {
     content: "";
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 0;
-  }
+}
 
-/* Title */
-h1.choose-cat.title {
+/* 🟡 Title */
+h1.choose-cat-title {
     color: white;
     font-size: 8vw;
     z-index: 1;
     margin: 0;
 }
 
-/* Grid Layout for Cat Choices */
+/* 🟢 Grid Layout for Cat Choices */
 .cat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -38,7 +39,7 @@ h1.choose-cat.title {
     margin-bottom: 5vw;
 }
 
-/* Cat Image Boxes */
+/* 🐱 Cat Image Boxes */
 .cat-box {
     width: 140px;
     height: 140px;
@@ -50,62 +51,120 @@ h1.choose-cat.title {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow: hidden;
 }
 
-/* Ensure Image Stays Visible */
+/* ✅ Ensure Image Stays Visible */
 .cat-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
     position: relative;
-    z-index: 2; /* ✅ Ensures image stays above sparkles */
+    z-index: 2;
 }
 
-/* Selected Cat */
+/* 🟡 Selected Cat */
 .cat-box.selected {
     position: relative;
 }
 
-/* Sparkle Container */
-.sparkle-container {
+/* ✨ Sparkle Wrapper (Keeps Effects in Box) */
+.sparkle-wrapper {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* ✨ Sparkle Container */
+.sparkle-container {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* ⭐ Base styles for both coin and star sparkles */
+.sparkle {
+    position: absolute;
+    background: none;
+    pointer-events: none;
     z-index: 1;
 }
 
-/* Sparkle Animation (Loops Forever) */
-@keyframes sparkle-animation {
-    0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-    50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
-    100% { opacity: 1; transform: scale(1) rotate(360deg); }
+/* 💰 Coin Animation */
+.coin {
+    width: 30px;
+    height: 30px;
+    animation: sparkle-fade linear infinite;
 }
 
-/* Sparkles (Infinite Loop) */
-.sparkle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border-radius: 50%;
-    animation: sparkle-animation 1.5s linear infinite;
-    animation-fill-mode: forwards; /* ✅ Keeps final state */
+/* ⭐ Star Animation */
+.star {
+    width: 25px;
+    height: 25px;
+    animation: sparkle-fade linear infinite;
 }
 
-/* Sparkles Appear One by One */
-.cat-box.selected .sparkle:nth-child(1) { top: -20px; left: -20px; animation-delay: 0s; }
-.cat-box.selected .sparkle:nth-child(2) { top: -20px; right: -20px; animation-delay: 0.3s; }
-.cat-box.selected .sparkle:nth-child(3) { bottom: -20px; left: -20px; animation-delay: 0.6s; }
-.cat-box.selected .sparkle:nth-child(4) { bottom: -20px; right: -20px; animation-delay: 0.9s; }
-.cat-box.selected .sparkle:nth-child(5) { top: 10px; left: 30px; animation-delay: 1.2s; }
+/* 🎮 Coin Sprite Animation */
+.coin-sprite {
+    width: 30px;
+    height: 30px;
+    background-image: url("../assets/coin/coin_01.png"); /* First frame */
+    animation:
+        coinSprite 0.5s steps(5) infinite,
+        fadeInOut 1s ease-in-out forwards;
+}
 
-/* "Let's Go" Button */
+/* ✨ Star Sprite Animation */
+.star-sprite {
+    width: 25px;
+    height: 25px;
+    background-image: url("../assets/star/star_01.png"); /* First frame */
+    animation:
+        starSprite 0.5s steps(4) infinite,
+        fadeInOut 1s ease-in-out forwards;
+}
+
+/* ⚙️ Coin Frame Animation */
+@keyframes coinSprite {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -150px 0; /* Total width of all frames */
+    }
+}
+
+/* ⚙️ Star Frame Animation */
+@keyframes starSprite {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100px 0; /* Total width of all frames */
+    }
+}
+
+/* ⚡ Fade-in & Fade-out Animation */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+/* 🟢 "Let's Go" Button */
 .lets-go-button {
     background-color: white;
     color: var(--brown);
@@ -124,7 +183,7 @@ h1.choose-cat.title {
     transition: ease 0.25s;
 }
 
-/* Disabled Button */
+/* 🟡 Disabled Button */
 .lets-go-button:disabled {
     background-color: grey !important;
     border-color: black !important;
@@ -132,20 +191,20 @@ h1.choose-cat.title {
     cursor: not-allowed;
 }
 
-/* Hover Effect */
+/* 🟢 Hover Effect */
 .lets-go-button:hover:enabled {
     background-color: white !important;
     color: var(--brown);
 }
 
-/* Fullscreen Menu Overlay */
+/* 📜 Fullscreen Menu Overlay */
 .menu-overlay {
-    position: fixed; /* ✅ Covers the entire screen */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.8); /* ✅ Dark background */
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,7 +213,7 @@ h1.choose-cat.title {
     z-index: 11;
 }
 
-/* Menu Button (Top Right) */
+/* 🟡 Menu Button (Top Right) */
 .menu-button {
     position: absolute;
     top: 20px;
@@ -170,7 +229,7 @@ h1.choose-cat.title {
     transform: scale(1.1);
 }
 
-/* Menu Options */
+/* 🔘 Menu Options */
 .menu-option {
     width: 120px;
     height: auto;
