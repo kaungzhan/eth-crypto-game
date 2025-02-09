@@ -28,6 +28,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
 }
 
 h1 {
@@ -65,4 +67,38 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Custom Title Bar */
+.titlebar {
+  position: fixed; /* Fix the titlebar at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #1a1a1a; /* More neutral color than blue */
+  color: white;
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center;
+  padding: 0 10px;
+  -webkit-app-region: drag;
+  z-index: 1000; /* Ensure titlebar stays on top */
+}
+/* Title Bar Buttons */
+.titlebar-buttons {
+  display: flex;
+  gap: 10px;
+  -webkit-app-region: no-drag; /* ✅ Allows button clicks */
+}
+
+.titlebar-buttons img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.titlebar-buttons img:hover {
+  transform: scale(1.1);
 }

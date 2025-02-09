@@ -2,12 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mekdi Pipeline</title>
+    <link rel="stylesheet" href="/src/css/TitleBar.css" />
   </head>
   <body>
+
+    <!-- Custom Title Bar -->
+    <div class="titlebar">
+      <div class="titlebar-buttons">
+        <img src="src/assets/minimize.png" id="minimize-button" alt="Minimize" />
+        <img src="src/assets/cross.png" id="close-button" alt="Close" />
+      </div>
+    </div>
+
+    <!-- React Root -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Title Bar JavaScript -->
+    <script>
+      document.getElementById("minimize-button").addEventListener("click", () => {
+        window.electronAPI?.minimize();
+      });
+
+      document.getElementById("close-button").addEventListener("click", () => {
+        window.electronAPI?.close();
+      });
+    </script>
+
   </body>
 </html>

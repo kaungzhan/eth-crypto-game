@@ -1,7 +1,6 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
 import { fileURLToPath } from "url";
-import { ipcMain } from "electron";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,18 +16,19 @@ app.whenReady().then(() => {
     maximizable: false,
     minimizable: true,
     useContentSize: true,
-    frame: false,
+    frame: false, // ✅ Hides default Electron frame for custom buttons
+    titleBarStyle: "hidden", // ✅ Ensures macOS styling works correctly
     webPreferences: {
       nodeIntegration: false,
-      contextIsolation: true,
-      preload: path.join(__dirname, "preload.cjs"), // 👈 Load the Preload Script
+      contextIsolation: true, // ✅ Securely expose APIs to renderer
+      preload: path.join(__dirname, "preload.cjs"), // ✅ Load the correct Preload Script
     },
   });
 
-  const isDev = process.env.NODE_ENV !== "production"; // Ensure this is correct
+  const isDev = process.env.NODE_ENV !== "production";
 
   if (isDev) {
-    console.log("🚀 Forcing Electron to load from Vite Dev Server: http://localhost:5173");
+    console.log("🚀 Loading from Vite Dev Server: http://localhost:5173");
     mainWindow.loadURL("http://localhost:5173");
   } else {
     const indexPath = `file://${path.join(__dirname, "dist", "index.html")}`;
@@ -36,24 +36,25 @@ app.whenReady().then(() => {
     mainWindow.loadURL(indexPath);
   }
   
-  // ✅ Prevent resizing at runtime
+  // Prevent resizing beyond fixed limits
   mainWindow.on("resize", () => {
     console.log("⚠️ Resize detected! Resetting to fixed size.");
     mainWindow.setSize(640, 520);
   });
 
+  // ✅ Minimize & Close handlers
+  ipcMain.on("minimize-window", () => {
+    if (mainWindow) mainWindow.minimize();
+  });
+
+  ipcMain.on("close-window", () => {
+    if (mainWindow) mainWindow.close();
+  });
+
   mainWindow.webContents.openDevTools();
 });
 
-ipcMain.on("minimize-window", () => {
-  mainWindow.minimize();
-});
-
-ipcMain.on("close-window", () => {
-  mainWindow.close();
-});
-
-// Prevent Electron from quitting
+// Ensure the app quits properly (except on macOS)
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
