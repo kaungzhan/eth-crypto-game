@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Choosecat.css"; // ✅ Import CSS
+import "../css/Choosecat.css"; 
 
-// 🐱 Cat 1
+// Import images
+import menuIcon from "../assets/menu.png";
+import playButton from "../assets/main-play.png";
+import quitButton from "../assets/main-quit.png";
+
 import cat1_1 from "../assets/cat1/cat1-1.png";
 import cat1_2 from "../assets/cat1/cat1-2.png";
 import cat1_3 from "../assets/cat1/cat1-3.png";
 
-// 🐱 Cat 2
 import cat2_1 from "../assets/cat2/cat2-1.png";
 import cat2_2 from "../assets/cat2/cat2-2.png";
 import cat2_3 from "../assets/cat2/cat2-3.png";
 
-// 🐱 Cat 3
 import cat3_1 from "../assets/cat3/cat3-1.png";
 import cat3_2 from "../assets/cat3/cat3-2.png";
 import cat3_3 from "../assets/cat3/cat3-3.png";
 
-// 🐱 Cat 4
 import cat4_1 from "../assets/cat4/cat4-1.png";
 import cat4_2 from "../assets/cat4/cat4-2.png";
 import cat4_3 from "../assets/cat4/cat4-3.png";
 
-// 🐱 Cat 5
 import cat5_1 from "../assets/cat5/cat5-1.png";
 import cat5_2 from "../assets/cat5/cat5-2.png";
 import cat5_3 from "../assets/cat5/cat5-3.png";
 
-// 🐱 Cat 6
 import cat6_1 from "../assets/cat6/cat6-1.png";
 import cat6_2 from "../assets/cat6/cat6-2.png";
 import cat6_3 from "../assets/cat6/cat6-3.png";
 
-// 💰 Coins & ⭐ Stars
 import coin1 from "../assets/coin/coin_01.png";
 import coin2 from "../assets/coin/coin_02.png";
 import coin3 from "../assets/coin/coin_03.png";
@@ -44,7 +42,6 @@ import star2 from "../assets/star/star_02.png";
 import star3 from "../assets/star/star_03.png";
 import star4 from "../assets/star/star_04.png";
 
-// ✅ Store animations in arrays
 const catAnimations = [
   [cat1_1, cat1_2, cat1_3],
   [cat2_1, cat2_2, cat2_3],
@@ -64,9 +61,9 @@ const ChooseCatPage: React.FC = () => {
   const [currentFrame, setCurrentFrame] = useState<number>(0);
   const [coinFrame, setCoinFrame] = useState<number>(0);
   const [starFrame, setStarFrame] = useState<number>(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sparkles, setSparkles] = useState<{ id: number; type: "coin" | "star"; top: string; left: string }[]>([]);
 
-  // 🟢 Hover Animation for Cats
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFrame((prev) => (prev + 1) % 3);
@@ -74,7 +71,6 @@ const ChooseCatPage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // 🟡 Coin & Star Animation
   useEffect(() => {
     const coinInterval = setInterval(() => {
       setCoinFrame((prev) => (prev + 1) % coinImages.length);
@@ -95,8 +91,8 @@ const ChooseCatPage: React.FC = () => {
         const newSparkle: { id: number; type: "coin" | "star"; top: string; left: string } = {
           id: Date.now(),
           type: Math.random() > 0.5 ? "coin" : "star",
-          top: `${Math.random() * 60 + 20}%`, // Keep within box
-          left: `${Math.random() * 60 + 20}%`, // Keep within box
+          top: `${Math.random() * 60 + 20}%`, 
+          left: `${Math.random() * 60 + 20}%`,
         };
         setSparkles((prev) => [...prev, newSparkle]);
 
@@ -108,7 +104,7 @@ const ChooseCatPage: React.FC = () => {
 
       return () => clearInterval(spawnInterval);
     } else {
-      setSparkles([]); // Clear sparkles when no cat is selected
+      setSparkles([]);
     }
   }, [selectedCat]);
 
@@ -122,9 +118,22 @@ const ChooseCatPage: React.FC = () => {
       navigate("/wallet", { state: { selectedCat: catAnimations[selectedCat][0] } }); // ✅ Pass first frame of selected cat
     }
   };
-  
+
+  // 🔽 Toggle Menu Overlay
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
     <div className="choose-cat-container">
+      {/* Menu Button (Top Right) */}
+      <img 
+        src={menuIcon} 
+        alt="Menu" 
+        className="menu-button"
+        onClick={toggleMenu} 
+      />
+
       <h1 className="choose-cat title">Choose your cat!</h1>
 
       <div className="cat-grid">
@@ -136,14 +145,12 @@ const ChooseCatPage: React.FC = () => {
             onMouseEnter={() => setHoveredCat(index)}
             onMouseLeave={() => setHoveredCat(null)}
           >
-            {/* 🐱 Hover Animation */}
             <img
               src={hoveredCat === index ? catFrames[currentFrame] : catFrames[0]}
               alt={`Cat ${index + 1}`}
               className="cat-image"
             />
 
-            {/* ✨ Coins & Stars Animation */}
             {selectedCat === index && (
               <div className="sparkle-wrapper">
                 {sparkles.map((sparkle) => (
@@ -170,7 +177,14 @@ const ChooseCatPage: React.FC = () => {
         ))}
       </div>
 
-      {/* 🔘 "Let's Go" Button */}
+      {/* Fullscreen Menu Overlay */}
+      {isMenuOpen && (
+        <div className="menu-overlay">
+          <img src={playButton} alt="Play" className="menu-option" onClick={toggleMenu} />
+          <img src={quitButton} alt="Quit" className="menu-option" onClick={() => navigate("/")} />
+        </div>
+      )}
+
       <button className="lets-go-button" onClick={handleLetsGo} disabled={selectedCat === null}>
         Let's Go
       </button>
