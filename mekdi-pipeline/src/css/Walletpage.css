@@ -1,0 +1,183 @@
+/* Sparkle Animation */
+@keyframes sparkle-animation {
+    0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+    100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+}
+
+/* Sparkle Containers */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white; /* White Square Instead of Sparkle Image */
+    border-radius: 5px;
+    animation: sparkle-animation 1.5s ease-out forwards;
+}
+
+/* Random Sparkle Positions */
+.wallet-box .sparkle:nth-child(1) { top: -20px; left: -30px; }
+.wallet-box .sparkle:nth-child(2) { top: -25px; right: -20px; }
+.wallet-box .sparkle:nth-child(3) { bottom: -25px; left: 15px; }
+.wallet-box .sparkle:nth-child(4) { bottom: -30px; right: -20px; }
+.wallet-box .sparkle:nth-child(5) { top: 10px; left: 30px; }
+
+/* Page Container */
+.wallet-container {
+    width: 100vw;
+    height: 100vh;
+    background: url(../assets/wallet-bg.jpg) center/cover no-repeat !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.wallet-container::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust the opacity as needed */
+    z-index: 0;
+  }
+
+.wallet-container.dimmed {
+    background-color: rgba(30, 41, 59, 0.7); /* Darker background */
+}
+
+/* Top Container (Holds Wallet & Character Boxes) */
+.top-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    top: 20%;
+}
+
+/* Wallet & Character Box */
+.wallet-box, .character-box {
+    width: 140px;
+    height: 140px;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    font-family: "DogicaPixel", sans-serif;
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Character Image */
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ✅ Ensures image fills the box without distortion */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+
+/* Wallet Box - Click Triggers Animation */
+.wallet-box {
+    position: absolute !important;
+    bottom: 22%;
+    left: 11%;
+    height: 50vw;
+    width: auto;
+    transform: rotate(-10deg);
+}
+
+/* Character Box (No Animation Here) */
+.character-box {
+    top: 2vw;
+    left: 26%;
+    height: 300px;
+    width: auto;
+}
+
+/* Hover Effect */
+.wallet-box:hover {
+    transform: scale(1.1);
+}
+
+/* Dialogue Box */
+.dialog-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px;
+    border-radius: 10px;
+    width: 80% !important;
+    max-width: 900px;
+    font-family: "DogicaPixel", sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+/* Dialogue Text */
+.dialog-text {
+    font-size: 1rem;
+}
+
+/* Menu Button (Top Right) */
+.menu-button {
+    position: absolute;
+    top: 8%;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+.menu-button:hover {
+    transform: scale(1.1);
+}
+
+/* Fullscreen Menu Overlay */
+.menu-overlay {
+    position: fixed; /* ✅ Covers the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* ✅ Dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 11;
+}
+
+/* Menu Options */
+.menu-option {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.menu-option:hover {
+    transform: scale(1.1);
+}
+
+/* Ensure Wallet & Character Stay Unchanged */
+.character-box, .dialog-box {
+    position: relative;
+    z-index: 3; /* ✅ Keep these below the menu */
+}
+
+.wallet-image {
+    width: 100%; /* ✅ Ensures it fills the wallet box */
+    height: 100%;
+    object-fit: contain; /* ✅ Maintains aspect ratio */
+}

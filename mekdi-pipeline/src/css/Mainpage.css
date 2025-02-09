@@ -1,0 +1,132 @@
+/* Load Custom Fonts */
+@font-face {
+  font-family: "DogicaPixel";
+  src: url("/fonts/dogicapixel.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DogicaPixelBold";
+  src: url("/fonts/dogicapixelbold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PixelMax-Regular";
+  src: url("/fonts/Pixelmax-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "PixelMax-Outline";
+  src: url("/fonts/Pixelmax-Outline.otf") format("opentype");
+}
+/* Apply Fonts to Specific Elements */
+body, .container, .button {
+  font-family: "DogicaPixel", sans-serif;
+}
+
+.title {
+  font-family: "PixelMax-Regular", sans-serif;
+  font-size: 10vw;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 5px 0 #000, 2px 2px 0 #000;
+}
+
+/* Centered Container */
+.container {
+  width: 640px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/bg.png") center/cover no-repeat !important;
+  color: white;
+  text-align: center;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 0;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4.25vw;
+  z-index: 1;
+}
+
+/* Buttons */
+.button {
+  background-color: transparent;
+  color: white;
+  font-size: 2.5vw;
+  padding: 3.5vw 1vw;
+  border: none;
+  cursor: pointer;
+  width: 34vw;
+  height: 10.9vw;
+}
+
+button:hover {
+  border-color: #63220f;
+}
+
+.play-btn .button {
+  background-image: url(../assets/blank-btn/green-btn.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-btn .button {
+  background-image: url(../assets/blank-btn/orange-btn.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Hover Effect */
+.button:hover {
+  transform: scale(1.05);
+  transition: ease 0.25s;
+}
+
+/* Prevent Window Resizing in Electron */
+html, body {
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.vibrate {
+	animation: vibrate 1.2s linear infinite both;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
