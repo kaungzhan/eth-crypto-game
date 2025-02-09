@@ -117,6 +117,12 @@ const ChooseCatPage: React.FC = () => {
     setSelectedCat(index);
   };
 
+  const handleLetsGo = () => {
+    if (selectedCat !== null) {
+      navigate("/wallet", { state: { selectedCat: catAnimations[selectedCat][0] } }); // ✅ Pass first frame of selected cat
+    }
+  };
+  
   return (
     <div className="choose-cat-container">
       <h1 className="choose-cat-title">Choose your cat!</h1>
@@ -165,7 +171,7 @@ const ChooseCatPage: React.FC = () => {
       </div>
 
       {/* 🔘 "Let's Go" Button */}
-      <button className="lets-go-button" onClick={() => navigate("/wallet")} disabled={selectedCat === null}>
+      <button className="lets-go-button" onClick={handleLetsGo} disabled={selectedCat === null}>
         Let's Go
       </button>
     </div>
