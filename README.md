@@ -51,7 +51,8 @@ To build thir project yourself, you will need the following tools:
 1. Navigate to [mekdi-pipeline](./mekdi-pipeline) using `cd mekdi-pipeline/`
 2. Run `npm install` to install dependencies
 3. You'll need to install electron/ vite via:
-   - electron.js: `npm install`
+   - electron.js: `npm install concurrently --save-dev`
+   - vite: `npm install -D vite`
 5. To run the project locally, use `npm start`
 6. To build the project for production, use `npm run build`
 
@@ -76,6 +77,6 @@ To build thir project yourself, you will need the following tools:
 
 # 📄 Our Pitch Deck
 This is the slide that we have prepared for our competition which covers most of the things describe in this README~  
-[ETH Oxford Slide.pdf](https://github.com/user-attachments/files/18724088/ETH.Oxford.Slide.pdf)
+Check out our [slides](https://github.com/user-attachments/files/18724088/ETH.Oxford.Slide.pdf)
 
 <h3>Thank you for going through this README! If you have any questions, feel free to contact any of us!</h3>
