@@ -35,7 +35,7 @@ const TitleBar: React.FC = () => {
       <span className="title-text">Mekdi Pipeline</span> {/* Change this to your game name */}
 
       {/* Minimize & Close Buttons */}
-      <div>
+      <div className="window-btns">
         <img src={minimizeIcon} alt="Minimize" className="title-button" onClick={handleMinimize} />
         <img src={closeIcon} alt="Close" className="title-button" onClick={handleClose} />
       </div>
