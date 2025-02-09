@@ -36,6 +36,25 @@ about crypto or will you send CryptMeow to Mekdi??? 🍔😼 Play to find out!
 4. Survive and thrive while managing resources and learning about Ethereum.
 5. Win or lose—see if you can avoid sending CryptMeow to Mekdi! 🐱💸
 
+## Developer Guide
+
+### Requirements
+
+To build thir project yourself, you will need the following tools:
+- VS Code
+- Typescript
+- Electron/ Vite
+- A clone of the repository via: `git clone https://github.com/kaungzhan/eth-crypto-game.git` or `git clone git@github.com:kaungzhan/eth-crypto-game.git`
+
+### Build
+
+1. Navigate to [mekdi-pipeline](./mekdi-pipeline) using `cd mekdi-pipeline/`
+2. Run `npm install` to install dependencies
+3. You'll need to install electron/ vite via:
+   - electron.js: `npm install`
+5. To run the project locally, use `npm start`
+6. To build the project for production, use `npm run build`
+
 # 🏗️ Tech Stack
 | Type         | Technology  |
 | ---------    | ---------- |
